@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/reconcile-pool-books-output",
+  "title": "reconcilePoolBooksOutput",
+  "description": "The two-witness reconciliation verdict: agreed, mismatch, posted-only, and asserted-only postings -- unknown never zero -- plus its receipt id.",
+  "type": "object",
+  "required": ["agreed", "mismatch", "postedOnly", "assertedOnly", "receipt"],
+  "properties": {
+    "agreed": { "type": "array", "items": { "$ref": "#/$defs/posting" } },
+    "mismatch": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["poolPosting", "memberPosting"],
+        "properties": {
+          "poolPosting": { "$ref": "#/$defs/posting" },
+          "memberPosting": { "$ref": "#/$defs/posting" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "postedOnly": { "type": "array", "items": { "$ref": "#/$defs/posting" } },
+    "assertedOnly": { "type": "array", "items": { "$ref": "#/$defs/posting" } },
+    "receipt": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "posting": {
+      "type": "object",
+      "required": ["date", "ref", "account", "amount", "commodity"],
+      "properties": {
+        "date": { "type": "string" },
+        "ref": { "type": "string" },
+        "account": { "type": "string" },
+        "amount": { "type": "string", "pattern": "^-?\\d+(\\.\\d+)?$" },
+        "commodity": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

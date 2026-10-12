@@ -1,0 +1,12 @@
+{
+  "id": "executing-tidepool-protocol-transitions",
+  "name": "executing Tidepool protocol transitions",
+  "authority": "tidepool",
+  "work": "executing-tidepool-protocol-transitions",
+  "claim": "tidepool-protocol-clerk",
+  "skills": [
+    "execute-tidepool-protocol-transitions"
+  ],
+  "delegation": true,
+  "receiver-condition": "Each requested Tidepool transition either produces an authoritative append-only receipt under existing rules or fails closed with the exact missing authority, witness, or state; operation execution itself creates no governance standing."
+}

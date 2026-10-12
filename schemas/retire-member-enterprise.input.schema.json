@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/retire-member-enterprise-input",
+  "title": "retireMemberEnterpriseInput",
+  "description": "The request retire-member-enterprise.mjs reads via --request or stdin: retiring a member enterprise after the dialogue-then-vote sequence has closed.",
+  "type": "object",
+  "required": ["enterpriseId", "reason", "retiredAt"],
+  "properties": {
+    "enterpriseId": { "type": "string", "minLength": 1 },
+    "reason": { "type": "string", "minLength": 1 },
+    "retiredAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

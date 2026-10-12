@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/derive-pool-barrier-series-output",
+  "title": "derivePoolBarrierSeriesOutput",
+  "description": "The derived barrier series: a dated, rising step series sorted by date ascending, one entry per breakpoint.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["date", "amount"],
+    "properties": {
+      "date": { "type": "string" },
+      "amount": { "type": "string", "pattern": "^-?\\d+(\\.\\d+)?$" }
+    },
+    "additionalProperties": false
+  }
+}

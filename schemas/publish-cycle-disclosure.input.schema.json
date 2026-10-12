@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/publish-cycle-disclosure-input",
+  "title": "publishCycleDisclosureInput",
+  "description": "The request publish-cycle-disclosure.mjs reads via --request or stdin: one closed cycle's disclosure, published from its persisted derive-cycle-split.mjs result and the pool's barrier series and enterprise roster.",
+  "type": "object",
+  "required": ["cycleId", "falsifiers", "publishedAt"],
+  "properties": {
+    "cycleId": { "type": "string", "minLength": 1 },
+    "falsifiers": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "publishedAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

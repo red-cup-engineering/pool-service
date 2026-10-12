@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/record-distribution-vote-input",
+  "title": "recordDistributionVoteInput",
+  "description": "The request record-distribution-vote.mjs reads via --request or stdin: one member's cycle vote, weighted by their matched-tally count read as of matchedTallyAsOf (the previous cycle's close).",
+  "type": "object",
+  "required": ["cycleId", "memberAccount", "allocations", "matchedTallyAsOf", "recordedAt"],
+  "properties": {
+    "cycleId": { "type": "string", "minLength": 1 },
+    "memberAccount": { "type": "string", "minLength": 1 },
+    "allocations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["enterpriseId", "weight"],
+        "properties": {
+          "enterpriseId": { "type": "string", "minLength": 1 },
+          "weight": { "type": "number", "minimum": 0 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "matchedTallyAsOf": { "type": "string", "format": "date-time", "description": "The previous cycle's close, or the pool's genesis time for a first cycle." },
+    "recordedAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

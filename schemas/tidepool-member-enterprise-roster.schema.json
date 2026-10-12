@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/tidepool-member-enterprise-roster",
+  "title": "TidepoolMemberEnterpriseRoster",
+  "description": "The org's own enterprises seated as Tidepool's first member-enterprise roster (membership-and-governance specification, 'Member enterprises'), admitted outright through admit-member-enterprise.mjs's allowUnsponsored path. Each row's offer and reportingCommitment are drawn from the 2026-09-05 collapse-aware-financial-enterprises note; sourceSection cites the exact section read.",
+  "type": "object",
+  "required": ["type", "seededAt", "sourceNote", "enterprises"],
+  "properties": {
+    "type": { "const": "TidepoolMemberEnterpriseRoster" },
+    "seededAt": { "type": "string", "format": "date-time" },
+    "sourceNote": { "type": "string", "minLength": 1 },
+    "enterprises": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["enterpriseId", "offer", "reportingCommitment", "sourceSection", "admitted", "receipt"],
+        "properties": {
+          "enterpriseId": { "type": "string", "minLength": 1 },
+          "offer": { "type": "string", "minLength": 1 },
+          "reportingCommitment": { "type": "string", "minLength": 1 },
+          "sourceSection": { "type": "string", "minLength": 1 },
+          "admitted": { "const": true },
+          "receipt": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

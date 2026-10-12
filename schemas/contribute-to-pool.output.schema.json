@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/contribute-to-pool-output",
+  "title": "contributeToPoolOutput",
+  "description": "The posted contribution's posting record plus its admission receipt id, or a refusal naming why the contribution could not post.",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["admitted", "posting", "receipt"],
+      "properties": {
+        "admitted": { "const": true },
+        "posting": {
+          "type": "object",
+          "required": ["date", "ref", "account", "amount", "commodity"],
+          "properties": {
+            "date": { "type": "string" },
+            "ref": { "type": "string" },
+            "account": { "type": "string" },
+            "amount": { "type": "string", "pattern": "^-?\\d+(\\.\\d+)?$" },
+            "commodity": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "receipt": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["admitted", "reason"],
+      "properties": {
+        "admitted": { "const": false },
+        "reason": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

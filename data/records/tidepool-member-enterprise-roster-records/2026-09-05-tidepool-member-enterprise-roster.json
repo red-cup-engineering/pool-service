@@ -1,0 +1,79 @@
+{
+  "type": "TidepoolMemberEnterpriseRoster",
+  "seededAt": "2026-09-05T00:00:00Z",
+  "sourceNote": "561-group-services-section/content/text/documents/articles/notes/2026/09/05/2026-09-05-note-on-collapse-aware-financial-enterprises.md: each offer is that note's own Offer paragraph (or its Receiver and job paragraph where no Offer paragraph exists), quoted verbatim; the founder's words are not paraphrased",
+  "enterprises": [
+    {
+      "enterpriseId": "climate-event-contract-desk",
+      "offer": "The 561 Group's own capital, machine-run and pseudonymous, staking on regulated event contracts about weather, climate, and energy prices where the house's scored forecast beats the market's implied probability. Later receivers: the letter's readers (section 2), who see the record.",
+      "reportingCommitment": "A loop records house and market probabilities side by side and scores both on settlement of every regulated event contract staked; falsified openly if, after thirty resolved forecasts per series, the house Brier score does not beat the market's.",
+      "sourceSection": "1. The climate event-contract desk",
+      "admitted": true,
+      "receipt": "ni:///sha-256;gyOJzU42gkEDlfvQwWAI0Nt_b342x6beq-36ZhP6jso"
+    },
+    {
+      "enterpriseId": "scored-letter",
+      "offer": "Readers who pay for geopolitics, energy, and collapse analysis today and get unscored opinion: a weekly letter under the 561 Group brand (this builds the nation-leader image and so may carry the founder's name) in which every claim is a forecast record with a resolution date, a falsifier, and a public Brier score, and every data claim comes from the house's own series (the basis book, section 4; the desk's record, section 1; the claims and option registers, sections 5 and 6).",
+      "reportingCommitment": "A running public calibration table is published beside the letter's analysis; falsified openly if, after fifty resolved public forecasts, the letter's Brier score does not beat the market's implied probabilities.",
+      "sourceSection": "2. The scored letter",
+      "admitted": true,
+      "receipt": "ni:///sha-256;UPTlGvrFK4Rzc9yttE0UC295LZ-y1JJC958Rk3l2Y48"
+    },
+    {
+      "enterpriseId": "tidepool-member-agent-and-consumption-hedge",
+      "offer": "The band, its kin, and its friends: one agent per member that reads their ledger, enumerates every arena with a priced edge (the arenas note under `public-financial-services-section`), executes what the member arms, and books every result with two witnesses; the pool that fronts the timing float and prices draws on circulation (tally credit); and, added by the energy-descent note, the consumption hedge that forward-buys the members' winter heating in the summer fill season and books it as inventory against the winter spot price.",
+      "reportingCommitment": "Every draw, settlement, and hedge position books with two witnesses (the pool's own ledger and the member's declared ledger); default posts as a mismatch held open, never an eviction.",
+      "sourceSection": "3. Tide Table Financial: the member agent, the pool, and the hedge",
+      "admitted": true,
+      "receipt": "ni:///sha-256;_QtZGmYH3ly-oqDrFmr8B_NVeH9kHZG6cw5y1nfKFzM"
+    },
+    {
+      "enterpriseId": "basis-book",
+      "offer": "A dated series per place of the difference between a benchmark and the price the band pays or receives: propane and diesel at the reservation pump against the state survey, groceries against the regional basket, rent against the county median, remittance fees per corridor, hay and cattle at the sale barn against the exchange, per-capita and lease income sold forward at a discount. Sold as an x402-priced API (the \"boring data feeds\" lane the recorded plan already names, the base-chain-data-gateway pattern) and as a column of the institutional contract.",
+      "reportingCommitment": "A dated series is posted per place and per good as it is recorded; falsified openly if, after a year, the basis series predicts nothing about local costs beyond the benchmark.",
+      "sourceSection": "4. The basis book as a data product",
+      "admitted": true,
+      "receipt": "ni:///sha-256;qDdnE07ffBBq_AJBIN0brMc--FEmsYUmiMBAol6YsfU"
+    },
+    {
+      "enterpriseId": "option-register-consultancy",
+      "offer": "The register: every structural claim the community holds against the project (consultation under the National Historic Preservation Act, environmental review scoping, treaty and reserved water rights, land along the interconnect route, standing in the utility commission docket) classed by the founder's own hierarchy (structural claims pause the permit; aspirational claims are consulted and tolerated; decorative claims are nothing), and each priced as an option: the delay it can impose times the developer's daily cost of delay, read from the project's public schedule and capital. A community benefit agreement is then negotiated as the sale of a priced option, never as goodwill.",
+      "reportingCommitment": "A loop records house and market probabilities side by side and scores both on settlement of every regulated event contract staked; falsified openly if, after thirty resolved forecasts per series, the house Brier score does not beat the market's.",
+      "sourceSection": "5. Structural-claims pricing: the option register as a consultancy",
+      "admitted": true,
+      "receipt": null
+    },
+    {
+      "enterpriseId": "claims-decay-register",
+      "offer": "Every obligation the settler apparatus carries toward the band and its members, as rows with amount, procedure, enforcement class, and decay evidence; filed in order of amount times decay, structural first; each claim a mismatch on the member's ledger until paid. The register is also the house's own collapse-stage indicator: the rate at which obligations move from structural to aspirational.",
+      "reportingCommitment": "A loop records house and market probabilities side by side and scores both on settlement of every regulated event contract staked; falsified openly if, after thirty resolved forecasts per series, the house Brier score does not beat the market's.",
+      "sourceSection": "6. The claims-decay register as a product",
+      "admitted": true,
+      "receipt": null
+    },
+    {
+      "enterpriseId": "forecaster-roster",
+      "offer": "The band's own forecasters. Tetlock's finding is that superforecasters are ordinary people with a method, selected by score; the roster is the tournament that finds them on the questions the band knows (plains weather, tribal elections, court cases, local prices) and the pool's rule that funds a member's stake in proportion to their scored record on the reference class (calibration as collateral).",
+      "reportingCommitment": "Each roster member's forecast record is scored against the venue's own implied probabilities after thirty resolutions; falsified openly if no member beats them.",
+      "sourceSection": "7. The forecaster roster",
+      "admitted": true,
+      "receipt": "ni:///sha-256;9OjgRIJUcbG9dAoe0Wu47jxemCDe6LJwKQgbrUh-5Xs"
+    },
+    {
+      "enterpriseId": "data-center-opposition-economy",
+      "offer": "Founder, 2026-09-05: \"americans haaaate data centers. can we profit off of that? sell them propaganda (provide it, get ad views?) do other more creative of things?\" The house answer, in the order of the house's own strengths, with the sixth lot commissioned to ground it:",
+      "reportingCommitment": "Per-county readings are published as opposition intelligence, a scored forecast column on which projects will be delayed, downsized, or cancelled and by what, and the input to a priced option; falsified openly if an incumbent is found already publishing per-project structural-claim readings with scored outcomes.",
+      "sourceSection": "8. The data-center opposition economy",
+      "admitted": true,
+      "receipt": "ni:///sha-256;F_ZYH6NuQ6itzDI-F5SBKx_EXUa28hXiw4uEuwiYF1c"
+    },
+    {
+      "enterpriseId": "tools-for-ourselves",
+      "offer": "Internal, commissioned tonight as the internal-enrichment lot or named for the next Fintech Friday:",
+      "reportingCommitment": "Each tool is committed as dated records or scored fields inside the sections it serves (the sleeve schema, the forecasting section's reference-class field, the registers under this custody's data/records/); no external reporting cadence applies since this enterprise has no outside receiver.",
+      "sourceSection": "9. Tools for ourselves",
+      "admitted": true,
+      "receipt": "ni:///sha-256;VJN2hrTU9WYUasKqrhbTvXqa8bmHkk-iL2Ifjolrt2g"
+    }
+  ]
+}

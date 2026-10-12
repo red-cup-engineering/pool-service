@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/record-distribution-vote-output",
+  "title": "recordDistributionVoteOutput",
+  "description": "The vote result: recorded with its applied weight and receipt, or a refusal (a zero-weight voter, a duplicate vote) naming why.",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["recorded", "weight", "receipt"],
+      "properties": {
+        "recorded": { "const": true },
+        "weight": { "type": "number" },
+        "receipt": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["recorded", "reason"],
+      "properties": { "recorded": { "const": false }, "reason": { "type": "string", "minLength": 1 } },
+      "additionalProperties": false
+    }
+  ]
+}

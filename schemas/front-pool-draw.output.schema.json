@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/front-pool-draw-output",
+  "title": "frontPoolDrawOutput",
+  "description": "The admitted draw's terms and paper transfer intent plus release receipt id, or a refusal naming exactly what forbade it.",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["admitted", "drawId", "price", "dueDate", "transferIntent", "receipt"],
+      "properties": {
+        "admitted": { "const": true },
+        "drawId": { "type": "string", "minLength": 1 },
+        "price": { "type": "string", "pattern": "^\\d+(\\.\\d+)?$" },
+        "dueDate": { "type": "string" },
+        "transferIntent": { "type": "object", "description": "{operation: [\"transfer\", {from, to, amount, memo}], mandate: null, paper: true}." },
+        "receipt": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["admitted", "reason"],
+      "properties": {
+        "admitted": { "const": false },
+        "reason": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/settle-pool-draw-input",
+  "title": "settlePoolDrawInput",
+  "description": "The request settle-pool-draw.mjs reads via --request or stdin: which fronted draw is being settled, and when.",
+  "type": "object",
+  "required": ["drawId", "admittedAt"],
+  "properties": {
+    "drawId": { "type": "string", "minLength": 1 },
+    "admittedAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

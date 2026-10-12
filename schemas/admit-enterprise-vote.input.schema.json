@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/admit-enterprise-vote-input",
+  "title": "admitEnterpriseVoteInput",
+  "description": "The request admit-enterprise-vote.mjs reads via --request or stdin: running a pending enterprise's admission proposal through the same weighted vote and quorum rule as a distribution vote.",
+  "type": "object",
+  "required": ["enterpriseId", "admittedAt"],
+  "properties": {
+    "enterpriseId": { "type": "string", "minLength": 1 },
+    "admittedAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

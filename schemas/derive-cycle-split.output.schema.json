@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/derive-cycle-split-output",
+  "title": "deriveCycleSplitOutput",
+  "description": "The cycle's exact-decimal split, the disclosure record membership specification's Disclosure section names.",
+  "type": "object",
+  "required": [
+    "cycleId",
+    "commodity",
+    "totalYield",
+    "reserve",
+    "float",
+    "distributable",
+    "fixedPortion",
+    "votedPortion",
+    "yieldEvidence",
+    "perEnterprise",
+    "receipt",
+    "quorumMet",
+    "voteMode"
+  ],
+  "properties": {
+    "cycleId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "commodity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "totalYield": {
+      "type": "string"
+    },
+    "reserve": {
+      "type": "string"
+    },
+    "float": {
+      "type": "string"
+    },
+    "distributable": {
+      "type": "string"
+    },
+    "fixedPortion": {
+      "type": "string"
+    },
+    "votedPortion": {
+      "type": "string"
+    },
+    "perEnterprise": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "enterpriseId",
+          "fixed",
+          "voted",
+          "total"
+        ],
+        "properties": {
+          "enterpriseId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "fixed": {
+            "type": "string"
+          },
+          "voted": {
+            "type": "string"
+          },
+          "total": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "receipt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "quorumMet": {
+      "type": "boolean"
+    },
+    "voteMode": {
+      "enum": [
+        "weighted",
+        "equal-fallback"
+      ]
+    },
+    "yieldEvidence": {
+      "type": "object",
+      "required": [
+        "recordNi",
+        "receiptCount",
+        "observedThrough"
+      ],
+      "properties": {
+        "recordNi": {
+          "type": "string",
+          "pattern": "^ni:///sha-256;[A-Za-z0-9_-]+$"
+        },
+        "receiptCount": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "observedThrough": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Content-addressed identity and bounded metadata for the exact normalized receipt set from which totalYield and commodity were derived."
+    }
+  },
+  "additionalProperties": false
+}

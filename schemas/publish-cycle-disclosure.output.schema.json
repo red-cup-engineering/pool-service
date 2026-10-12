@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/publish-cycle-disclosure-output",
+  "title": "publishCycleDisclosureOutput",
+  "description": "What was written: the dated disclosure record's path and its receipt.",
+  "type": "object",
+  "required": ["published", "path", "receipt"],
+  "properties": {
+    "published": { "const": true },
+    "path": { "type": "string", "minLength": 1 },
+    "receipt": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": false
+}

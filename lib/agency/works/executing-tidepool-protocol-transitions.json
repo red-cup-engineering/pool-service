@@ -1,0 +1,11 @@
+{
+  "id": "executing-tidepool-protocol-transitions",
+  "name": "executing Tidepool protocol transitions",
+  "from": "An already-authorized Tidepool admission, enterprise-governance, distribution-vote, cycle-close, reconciliation, or disclosure transition with the witnesses required by its operation contract.",
+  "to": "The authoritative Tidepool state and append-only receipts reflect the transition, or an explicit refusal preserves prior state.",
+  "cost": "Bounded protocol execution and receiving evidence; no discretionary principal custody or invented governance state.",
+  "otherwise": "Refuse without mutation and expose the missing authority, witness, state, quorum, reconciliation, or receiving condition.",
+  "needs": [
+    "execute-tidepool-protocol-transitions"
+  ]
+}

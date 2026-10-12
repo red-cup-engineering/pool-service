@@ -1,0 +1,99 @@
+{
+  "type": "PoolCycleDisclosure",
+  "cycleId": "2026-09-cycle-1",
+  "publishedAt": "2026-09-05T00:00:00Z",
+  "members": {
+    "barrierSeries": [],
+    "split": {
+      "cycleId": "2026-09-cycle-1",
+      "commodity": "USDC",
+      "totalYield": "100",
+      "reserve": "20",
+      "float": "30",
+      "distributable": "50",
+      "fixedPortion": "25",
+      "votedPortion": "25",
+      "perEnterprise": [
+        {
+          "enterpriseId": "ent-1",
+          "fixed": "12.5",
+          "voted": "12.5",
+          "total": "25"
+        },
+        {
+          "enterpriseId": "ent-2",
+          "fixed": "12.5",
+          "voted": "12.5",
+          "total": "25"
+        }
+      ]
+    },
+    "enterprises": [
+      {
+        "enterpriseId": "ent-1",
+        "offer": "a scored letter, priced plainly",
+        "reportingCommitment": "monthly",
+        "sponsorEnterprise": null,
+        "status": "admitted",
+        "admittedAt": null,
+        "retiredAt": null,
+        "retiredReason": null
+      },
+      {
+        "enterpriseId": "ent-2",
+        "offer": "the basis book, priced plainly",
+        "reportingCommitment": "monthly",
+        "sponsorEnterprise": null,
+        "status": "admitted",
+        "admittedAt": null,
+        "retiredAt": null,
+        "retiredReason": null
+      }
+    ]
+  },
+  "public": {
+    "roster": [
+      {
+        "enterpriseId": "ent-1",
+        "offer": "a scored letter, priced plainly"
+      },
+      {
+        "enterpriseId": "ent-2",
+        "offer": "the basis book, priced plainly"
+      }
+    ],
+    "cycle": {
+      "cycleId": "2026-09-cycle-1",
+      "commodity": "USDC",
+      "totalYield": "100",
+      "reserve": "20",
+      "float": "30",
+      "distributable": "50",
+      "fixedPortion": "25",
+      "votedPortion": "25",
+      "splitRatioPercent": {
+        "reserve": 20,
+        "float": 30,
+        "distributable": 50
+      },
+      "perEnterpriseTotals": [
+        {
+          "enterpriseId": "ent-1",
+          "total": "25"
+        },
+        {
+          "enterpriseId": "ent-2",
+          "total": "25"
+        }
+      ]
+    },
+    "falsifiers": [
+      "Yield below operating cost for more than two consecutive cycles at the smallest actively-routing pool size.",
+      "A legal reading closes the non-custodial routing (FinCEN, a state regulator, or counsel).",
+      "Member churn: more than half of a rolling twelve-cycle window's routing members stop routing.",
+      "Participation: fewer than three members cast a tally-vote in more than half of a rolling twelve-cycle window.",
+      "Default rate: tally-secured lines default at a higher rate than balance-secured lines of comparable size.",
+      "Capture: any set of members jointly holding more than half of a cycle's matched-tally weight for three consecutive cycles directs the voted portion to enterprises they control."
+    ]
+  }
+}

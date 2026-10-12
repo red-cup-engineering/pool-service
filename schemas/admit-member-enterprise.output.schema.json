@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/admit-member-enterprise-output",
+  "title": "admitMemberEnterpriseOutput",
+  "description": "The proposal result: admitted (pending or, for allowUnsponsored, admitted outright) with its receipt, or a refusal naming why.",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["admitted", "receipt"],
+      "properties": { "admitted": { "const": true }, "receipt": { "type": "string", "minLength": 1 } },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["admitted", "reason"],
+      "properties": { "admitted": { "const": false }, "reason": { "type": "string", "minLength": 1 } },
+      "additionalProperties": false
+    }
+  ]
+}

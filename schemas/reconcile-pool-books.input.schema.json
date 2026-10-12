@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/reconcile-pool-books-input",
+  "title": "reconcilePoolBooksInput",
+  "description": "Resolve the admitted member's ledgerWitness and reconcile it against pool facts. memberLedgerPath is a deprecated 0.5.0 override.",
+  "type": "object",
+  "required": [
+    "account",
+    "recordedAt"
+  ],
+  "properties": {
+    "account": {
+      "type": "string",
+      "minLength": 1
+    },
+    "memberLedgerPath": {
+      "type": "string",
+      "minLength": 1,
+      "deprecated": true
+    },
+    "recordedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

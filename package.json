@@ -1,0 +1,67 @@
+{
+  "name": "@red-cup-engineering/pool-service",
+  "version": "0.6.0",
+  "type": "module",
+  "description": "The pool: the poor's manufactured ensemble as operations over the house ledger, with typed settlement destinations across supported rails. Members pool bounded sleeves; the pool is itself a sleeve with a rising barrier series; draws are timing-float instruments priced on the fee they avoid and limited by tally credit (matched crossings, never balance); every draw is a release/admission crossing; a default is a mismatch held in FOUR, never an eviction.",
+  "keywords": [
+    "561-group",
+    "pool",
+    "tally-credit",
+    "timing-float",
+    "hbd",
+    "hive",
+    "financial-engineering",
+    "base",
+    "usdc",
+    "multirail"
+  ],
+  "scripts": {
+    "check": "for f in src/*.mjs scripts/*.mjs apps/*.mjs; do node --check \"$f\" || exit 1; done",
+    "test": "node --test test/*.test.mjs"
+  },
+  "exports": {
+    ".": "./src/pool.mjs",
+    "./admit-pool-member": "./scripts/admit-pool-member.mjs",
+    "./derive-member-credit-line": "./scripts/derive-member-credit-line.mjs",
+    "./front-pool-draw": "./scripts/front-pool-draw.mjs",
+    "./settle-pool-draw": "./scripts/settle-pool-draw.mjs",
+    "./contribute-to-pool": "./scripts/contribute-to-pool.mjs",
+    "./derive-pool-barrier-series": "./scripts/derive-pool-barrier-series.mjs",
+    "./reconcile-pool-books": "./scripts/reconcile-pool-books.mjs",
+    "./admit-member-enterprise": "./scripts/admit-member-enterprise.mjs",
+    "./retire-member-enterprise": "./scripts/retire-member-enterprise.mjs",
+    "./record-distribution-vote": "./scripts/record-distribution-vote.mjs",
+    "./tally-cycle-votes": "./scripts/tally-cycle-votes.mjs",
+    "./derive-cycle-split": "./scripts/derive-cycle-split.mjs",
+    "./admit-enterprise-vote": "./scripts/admit-enterprise-vote.mjs",
+    "./contest-pool-receipt": "./scripts/contest-pool-receipt.mjs",
+    "./derive-set-of-pool-cycle-transactions": "./scripts/derive-set-of-pool-cycle-transactions.mjs",
+    "./reconcile-pool-receipts": "./scripts/reconcile-pool-receipts.mjs",
+    "./publish-cycle-disclosure": "./scripts/publish-cycle-disclosure.mjs",
+    "./pool-cli": "./apps/pool-cli.mjs",
+    "./package.json": "./package.json",
+    "./ledger-witness": "./src/ledger-witness.mjs"
+  },
+  "bin": {
+    "pool-cli": "apps/pool-cli.mjs"
+  },
+  "dependencies": {
+    "@red-cup-engineering/energy-bank": "workspace:*",
+    "@red-cup-engineering/flatfile-engineering-services-section": "workspace:*",
+    "@red-cup-engineering/json-schema-services-section": "workspace:*",
+    "@red-cup-engineering/semiotic-eavt-services-section": "workspace:*",
+    "@red-cup-engineering/treasury-observation-service": "workspace:*",
+    "@red-cup-engineering/eavt-services-section": "workspace:*"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "sideEffects": false,
+  "files": [
+    "src",
+    "scripts",
+    "apps",
+    "schemas",
+    "README.md"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/contest-pool-receipt-input",
+  "title": "contestPoolReceiptInput",
+  "description": "The request contest-pool-receipt.mjs reads via --request or stdin: opening a contest window on a reconcilePoolBooks bucket entry.",
+  "type": "object",
+  "required": ["ref", "contestedBy", "reason", "contestedAt"],
+  "properties": {
+    "ref": { "type": "string", "minLength": 1 },
+    "contestedBy": { "type": "string", "minLength": 1 },
+    "reason": { "type": "string", "minLength": 1 },
+    "contestedAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

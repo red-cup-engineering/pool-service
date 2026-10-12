@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/admit-pool-member-input",
+  "title": "admitPoolMemberInput",
+  "description": "The request `admit-pool-member.mjs` reads (NDJSON stdin, or the same fields as --flags): the pool's own founding fields, present only when its state document does not yet exist, plus the member being admitted.",
+  "type": "object",
+  "required": ["poolId", "settlementWindowDays", "account", "hiveAccount", "ledgerPath"],
+  "properties": {
+    "poolId": { "type": "string", "minLength": 1, "description": "Local pool id, namespaced into a ledger account via poolAccountId." },
+    "settlementWindowDays": { "type": "integer", "exclusiveMinimum": 0, "description": "Days a draw has to settle before its half-tally is \"old\"." },
+    "creditWindowDays": { "type": "integer", "exclusiveMinimum": 0, "description": "Lookback window for counting matched tallies toward a member's line; defaults to 90." },
+    "poolHiveAccount": { "type": ["string", "null"], "description": "The pool's own Hive account, the settlement source for a draw's transfer intent; null (unarmed) until the founder names one." },
+    "account": { "type": "string", "minLength": 1, "description": "The member's internal pool-ledger account id." },
+    "hiveAccount": { "type": "string", "minLength": 1, "description": "The Hive account name an HBD draw settles to." },
+    "baseAddress": { "type": ["string", "null"], "description": "The Base address a USDC directed-yield contribution or distribution settles to; two rails, one ledger." },
+    "ledgerPath": { "type": "string", "minLength": 1, "description": "Path to the member's own declared ledger (the second witness)." },
+    "admissionWitness": {
+      "description": "Optional: when present, verified per the membership-and-governance specification's three admission paths before the member is admitted; when absent, the pool's own unwitnessed admission applies unchanged.",
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["kind", "sponsorAccount", "pledgedAmount"],
+          "properties": {
+            "kind": { "const": "sponsor-vouch" },
+            "sponsorAccount": { "type": "string", "minLength": 1 },
+            "pledgedAmount": { "type": "string", "pattern": "^\\d+(\\.\\d+)?$" }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["kind", "enterpriseId"],
+          "properties": { "kind": { "const": "enterprise-roster" }, "enterpriseId": { "type": "string", "minLength": 1 } },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["kind", "discordSubjectHash", "guildId", "roleId", "checkedAt"],
+          "properties": {
+            "kind": { "const": "turntide-islander-role" },
+            "discordSubjectHash": { "type": "string", "minLength": 1 },
+            "guildId": { "type": "string", "minLength": 1 },
+            "roleId": { "type": "string", "minLength": 1 },
+            "checkedAt": { "type": "string", "format": "date-time" }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "admittedAt": { "type": "string", "format": "date-time", "description": "Required for a receipt to be recorded, and for staleness checks against a turntide-islander-role witness's checkedAt; omit to admit with no receipt." }
+  },
+  "additionalProperties": false
+}

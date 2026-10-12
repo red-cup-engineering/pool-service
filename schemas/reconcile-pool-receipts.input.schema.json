@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/reconcile-pool-receipts-input",
+  "title": "reconcilePoolReceiptsInput",
+  "description": "The request reconcile-pool-receipts.mjs runs against: the key-management wallet registry, the pool's registered Base wallet id, and the cycle-transactions sidecar to reconcile against a live on-chain read.",
+  "type": "object",
+  "required": ["walletRegistryPath", "walletId", "sidecarPath", "recordedAt"],
+  "properties": {
+    "walletRegistryPath": { "type": "string", "minLength": 1 },
+    "walletId": { "type": "string", "minLength": 1 },
+    "sidecarPath": { "type": "string", "minLength": 1 },
+    "recordedAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

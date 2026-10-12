@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/front-pool-draw-input",
+  "title": "frontPoolDrawInput",
+  "description": "The request front-pool-draw.mjs reads via --request or stdin: the timing float a member is asking the pool to front against a bill due before an inflow lands.",
+  "type": "object",
+  "required": ["account", "amount", "inflowDate", "dueDate", "requestedAt"],
+  "properties": {
+    "account": { "type": "string", "minLength": 1 },
+    "amount": { "type": "string", "pattern": "^\\d+(\\.\\d+)?$" },
+    "feeAvoided": { "type": ["string", "null"], "pattern": "^\\d+(\\.\\d+)?$", "description": "Exact HBD decimal string of the fee this draw avoids, or null when unknown." },
+    "priceFraction": { "type": "number", "exclusiveMinimum": 0, "description": "Fraction of the avoided fee the pool prices the draw at; defaults to 1." },
+    "inflowDate": { "type": "string" },
+    "dueDate": { "type": "string" },
+    "requestedAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/derive-pool-barrier-series-input",
+  "title": "derivePoolBarrierSeriesInput",
+  "description": "The request derive-pool-barrier-series.mjs reads via --request or stdin: the base floor and every member's declared rent/utility/heating obligation the barrier rises ahead of.",
+  "type": "object",
+  "required": ["baseFloor", "obligations"],
+  "properties": {
+    "baseFloor": { "type": "string", "pattern": "^-?\\d+(\\.\\d+)?$", "description": "Exact HBD decimal string: the barrier with no obligations pending." },
+    "obligations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["memberAccount", "kind", "dueDate", "amount"],
+        "properties": {
+          "memberAccount": { "type": "string", "minLength": 1 },
+          "kind": { "type": "string", "minLength": 1 },
+          "dueDate": { "type": "string", "format": "date-time" },
+          "amount": { "type": "string", "pattern": "^-?\\d+(\\.\\d+)?$" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "leadDays": { "type": "integer", "minimum": 0, "description": "Forward-looking window in which a due obligation counts toward the barrier; defaults to 14." }
+  },
+  "additionalProperties": false
+}

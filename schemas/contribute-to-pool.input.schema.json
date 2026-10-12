@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/contribute-to-pool-input",
+  "title": "contributeToPoolInput",
+  "description": "The request contribute-to-pool.mjs reads via --request or stdin: a member funding the pool from their own sleeve.",
+  "type": "object",
+  "required": ["account", "amount", "commodity", "sourceSleeve", "contributedAt"],
+  "properties": {
+    "account": { "type": "string", "minLength": 1, "description": "The contributing member's internal pool-ledger account id." },
+    "amount": { "type": "string", "pattern": "^\\d+(\\.\\d+)?$", "description": "Exact decimal string, denominated in commodity." },
+    "commodity": { "type": "string", "minLength": 1, "description": "The commodity this contribution is denominated in (e.g. \"HBD\")." },
+    "sourceSleeve": { "type": "string", "minLength": 1, "description": "The member's own ledger account id the contribution is drawn from." },
+    "contributedAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

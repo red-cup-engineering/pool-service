@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/tally-cycle-votes-output",
+  "title": "tallyCycleVotesOutput",
+  "description": "The cycle's tally: whether quorum (three nonzero-weight voters) was met, the voter count and total weight, each enterprise's summed weighted share, and the receipt.",
+  "type": "object",
+  "required": [
+    "cycleId",
+    "quorumMet",
+    "voterCount",
+    "totalWeight",
+    "shares",
+    "receipt",
+    "closedAt",
+    "voteEvidence"
+  ],
+  "properties": {
+    "cycleId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "quorumMet": {
+      "type": "boolean"
+    },
+    "voterCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "totalWeight": {
+      "type": "number",
+      "minimum": 0
+    },
+    "shares": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "receipt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "closedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "voteEvidence": {
+      "type": "object",
+      "required": [
+        "recordNi",
+        "voteCount",
+        "excludedLateVoteCount"
+      ],
+      "properties": {
+        "recordNi": {
+          "type": "string",
+          "pattern": "^ni:///sha-256;[A-Za-z0-9_-]+$"
+        },
+        "voteCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excludedLateVoteCount": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false,
+      "description": "Content-addressed identity of the exact vote set included at first close, plus bounded counts for included and timestamp-late votes."
+    }
+  },
+  "additionalProperties": false
+}

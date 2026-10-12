@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/tally-cycle-votes-input",
+  "title": "tallyCycleVotesInput",
+  "description": "The request tally-cycle-votes.mjs reads via --request or stdin. closedAt bounds which already-recorded votes enter the immutable first tally; it describes the requested close instant but does not itself prove an admitted monthly cycle calendar boundary.",
+  "type": "object",
+  "required": [
+    "cycleId",
+    "closedAt"
+  ],
+  "properties": {
+    "cycleId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "closedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO date/time cutoff for the immutable first tally. Votes recorded after this instant are excluded. Separate governance/calendar evidence is still required before treating the instant as an authorized monthly close."
+    }
+  },
+  "additionalProperties": false
+}

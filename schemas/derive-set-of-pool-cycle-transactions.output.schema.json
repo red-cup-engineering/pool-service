@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/derive-set-of-pool-cycle-transactions-output",
+  "title": "deriveSetOfPoolCycleTransactionsOutput",
+  "description": "What was booked/received into cycle booking state with a content-addressed sidecar witness, or a refusal naming why booking cannot be received.",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": [
+        "booked",
+        "recovered",
+        "path",
+        "sidecarNi",
+        "transactionCount",
+        "receipt"
+      ],
+      "properties": {
+        "booked": {
+          "const": true
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "transactionCount": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "receipt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recovered": {
+          "type": "boolean"
+        },
+        "sidecarNi": {
+          "type": "string",
+          "pattern": "^ni:///sha-256;[A-Za-z0-9_-]+$"
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "booked",
+        "reason"
+      ],
+      "properties": {
+        "booked": {
+          "const": false
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

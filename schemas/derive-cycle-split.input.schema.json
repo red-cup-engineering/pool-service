@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/derive-cycle-split-input",
+  "title": "deriveCycleSplitInput",
+  "description": "The request derive-cycle-split.mjs reads via --request or stdin: one cycle's positive directed-yield receipt evidence plus optional total/commodity assertions, to derive the barrier reserve, tally-credit float, and distributable split.",
+  "type": "object",
+  "required": [
+    "cycleId",
+    "directedYieldReceipts",
+    "recordedAt"
+  ],
+  "properties": {
+    "cycleId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "totalYield": {
+      "type": "string",
+      "pattern": "^\\d+(\\.\\d+)?$",
+      "description": "Optional assertion checked against the exact total derived from directedYieldReceipts; it does not establish the total."
+    },
+    "commodity": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Optional assertion checked against the single commodity carried by directedYieldReceipts; it does not establish the commodity."
+    },
+    "reserveFraction": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Defaults to 0.20."
+    },
+    "floatFraction": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Defaults to 0.30."
+    },
+    "fixedFraction": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Defaults to 0.50; fraction of the distributable bucket divided evenly."
+    },
+    "recordedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "directedYieldReceipts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "memberAccount",
+          "amount",
+          "commodity",
+          "observedAt"
+        ],
+        "properties": {
+          "memberAccount": {
+            "type": "string",
+            "minLength": 1
+          },
+          "amount": {
+            "type": "string",
+            "pattern": "^\\d+(\\.\\d+)?$"
+          },
+          "commodity": {
+            "type": "string",
+            "minLength": 1
+          },
+          "observedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "txHash": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

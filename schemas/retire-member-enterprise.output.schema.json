@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/retire-member-enterprise-output",
+  "title": "retireMemberEnterpriseOutput",
+  "description": "The retirement result: retired with its receipt, or a refusal naming why.",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["retired", "receipt"],
+      "properties": { "retired": { "const": true }, "receipt": { "type": "string", "minLength": 1 } },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["retired", "reason"],
+      "properties": { "retired": { "const": false }, "reason": { "type": "string", "minLength": 1 } },
+      "additionalProperties": false
+    }
+  ]
+}

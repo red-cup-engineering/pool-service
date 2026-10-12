@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/derive-member-credit-line-output",
+  "title": "deriveMemberCreditLineOutput",
+  "description": "A member's derived tally-credit standing (deriveMemberCreditLine's result, the three-ways note's rule: limit = matchedPairsInWindow x medianSettledSize x factor).",
+  "type": "object",
+  "required": ["limit", "matchedPairs", "medianSettledSize", "factor", "openHalfTallies", "staleHalfTallies"],
+  "properties": {
+    "limit": { "type": "string", "pattern": "^-?\\d+(\\.\\d+)?$", "description": "Exact HBD decimal string." },
+    "matchedPairs": { "type": "integer", "minimum": 0 },
+    "medianSettledSize": { "type": "string", "pattern": "^-?\\d+(\\.\\d+)?$" },
+    "factor": { "enum": [0, 1] },
+    "openHalfTallies": { "type": "integer", "minimum": 0 },
+    "staleHalfTallies": { "type": "integer", "minimum": 0 }
+  },
+  "additionalProperties": false
+}

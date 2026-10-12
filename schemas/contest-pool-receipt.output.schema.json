@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/contest-pool-receipt-output",
+  "title": "contestPoolReceiptOutput",
+  "description": "The contest result: opened with the contest record and receipt, or a refusal (a duplicate open contest) naming why.",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["contested", "contest", "receipt"],
+      "properties": {
+        "contested": { "const": true },
+        "contest": {
+          "type": "object",
+          "required": ["ref", "contestedBy", "reason", "contestedAt", "status"],
+          "properties": {
+            "ref": { "type": "string", "minLength": 1 },
+            "contestedBy": { "type": "string", "minLength": 1 },
+            "reason": { "type": "string", "minLength": 1 },
+            "contestedAt": { "type": "string", "format": "date-time" },
+            "status": { "const": "open" }
+          },
+          "additionalProperties": false
+        },
+        "receipt": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["contested", "reason"],
+      "properties": { "contested": { "const": false }, "reason": { "type": "string", "minLength": 1 } },
+      "additionalProperties": false
+    }
+  ]
+}

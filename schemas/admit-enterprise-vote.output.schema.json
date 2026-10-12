@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/admit-enterprise-vote-output",
+  "title": "admitEnterpriseVoteOutput",
+  "description": "The admission-vote result: admitted with the passing tally and receipt, or a refusal naming why, alongside the tally that did not pass.",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["admitted", "tally", "receipt"],
+      "properties": { "admitted": { "const": true }, "tally": { "type": "object" }, "receipt": { "type": "string", "minLength": 1 } },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["admitted", "reason", "tally"],
+      "properties": { "admitted": { "const": false }, "reason": { "type": "string", "minLength": 1 }, "tally": { "type": "object" } },
+      "additionalProperties": false
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/derive-member-credit-line-input",
+  "title": "deriveMemberCreditLineInput",
+  "description": "The `--account`/`--now` request `derive-member-credit-line.mjs` evaluates a member's tally-credit standing against, over the pool document at `--state`.",
+  "type": "object",
+  "required": ["account", "now"],
+  "properties": {
+    "account": { "type": "string", "minLength": 1, "description": "The member's ledger account id." },
+    "now": { "type": "string", "format": "date-time", "description": "ISO date/time \"now\" is evaluated at." }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/pool-cycle-disclosure",
+  "title": "PoolCycleDisclosure",
+  "description": "One closed cycle's disclosure record (membership-and-governance specification, 'Disclosure'): the members' view (barrier series, full split, full enterprise roster) and the public view (roster and offers, split ratio and totals, falsifiers). Never per-member draws, ledgers, or admissionWitness data.",
+  "type": "object",
+  "required": ["type", "cycleId", "publishedAt", "members", "public"],
+  "properties": {
+    "type": { "const": "PoolCycleDisclosure" },
+    "cycleId": { "type": "string", "minLength": 1 },
+    "publishedAt": { "type": "string", "format": "date-time" },
+    "members": {
+      "type": "object",
+      "required": ["barrierSeries", "split", "enterprises"],
+      "properties": {
+        "barrierSeries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["date", "amount"],
+            "properties": { "date": { "type": "string" }, "amount": { "type": "string" } },
+            "additionalProperties": false
+          }
+        },
+        "split": { "type": "object" },
+        "enterprises": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["enterpriseId", "offer", "reportingCommitment", "sponsorEnterprise", "status"],
+            "properties": {
+              "enterpriseId": { "type": "string", "minLength": 1 },
+              "offer": { "type": "string", "minLength": 1 },
+              "reportingCommitment": { "type": "string", "minLength": 1 },
+              "sponsorEnterprise": { "type": ["string", "null"] },
+              "status": { "enum": ["pending", "admitted", "retired"] },
+              "admittedAt": { "type": ["string", "null"] },
+              "retiredAt": { "type": ["string", "null"] },
+              "retiredReason": { "type": ["string", "null"] }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "public": {
+      "type": "object",
+      "required": ["roster", "cycle", "falsifiers"],
+      "properties": {
+        "roster": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["enterpriseId", "offer"],
+            "properties": { "enterpriseId": { "type": "string", "minLength": 1 }, "offer": { "type": "string", "minLength": 1 } },
+            "additionalProperties": false
+          }
+        },
+        "cycle": {
+          "type": "object",
+          "required": ["cycleId", "commodity", "totalYield", "reserve", "float", "distributable", "fixedPortion", "votedPortion", "splitRatioPercent", "perEnterpriseTotals"],
+          "properties": {
+            "cycleId": { "type": "string", "minLength": 1 },
+            "commodity": { "type": "string", "minLength": 1 },
+            "totalYield": { "type": "string" },
+            "reserve": { "type": "string" },
+            "float": { "type": "string" },
+            "distributable": { "type": "string" },
+            "fixedPortion": { "type": "string" },
+            "votedPortion": { "type": "string" },
+            "splitRatioPercent": {
+              "type": "object",
+              "required": ["reserve", "float", "distributable"],
+              "properties": {
+                "reserve": { "type": "integer" },
+                "float": { "type": "integer" },
+                "distributable": { "type": "integer" }
+              },
+              "additionalProperties": false
+            },
+            "perEnterpriseTotals": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["enterpriseId", "total"],
+                "properties": { "enterpriseId": { "type": "string", "minLength": 1 }, "total": { "type": "string" } },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "falsifiers": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

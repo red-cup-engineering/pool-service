@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/reconcile-pool-receipts-output",
+  "title": "reconcilePoolReceiptsOutput",
+  "description": "The two-witness verdict (agreed/mismatch/postedOnly/assertedOnly, reconcilePoolBooks's own shape) between the pool's live on-chain Base USDC balance and its booked Assets:...:EVM:Base:Pool:* running balance, or a refusal naming why the reconciliation could not run.",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["reconciled", "agreed", "mismatch", "postedOnly", "assertedOnly", "receipt"],
+      "properties": {
+        "reconciled": { "const": true },
+        "agreed": { "type": "array" },
+        "mismatch": { "type": "array" },
+        "postedOnly": { "type": "array" },
+        "assertedOnly": { "type": "array" },
+        "receipt": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["reconciled", "reason"],
+      "properties": {
+        "reconciled": { "const": false },
+        "reason": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

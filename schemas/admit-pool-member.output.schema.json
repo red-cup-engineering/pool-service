@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/admit-pool-member-output",
+  "title": "admitPoolMemberOutput",
+  "description": "The admission result: the updated pool record on success, or a refusal naming a duplicate member.",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["admitted", "pool"],
+      "properties": {
+        "admitted": { "const": true },
+        "pool": { "type": "object", "description": "The pool record, per pool.mjs's createPool/admitMember: id, namespace, account, hiveAccount, members, barrierSeries, settlementWindowDays, creditWindowDays, ledger, tallies." },
+        "receipt": { "type": ["string", "null"], "description": "The admission receipt id, or null when admittedAt was not supplied." }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["admitted", "reason"],
+      "properties": {
+        "admitted": { "const": false },
+        "reason": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

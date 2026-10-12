@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/derive-cycle-split-input",
+  "title": "deriveCycleSplitInput",
+  "description": "The request derive-cycle-split.mjs reads via --request or stdin: one cycle's directed-yield split into barrier reserve, tally-credit float, and distributable (fixed-even plus tally-weighted vote).",
+  "type": "object",
+  "required": ["cycleId", "totalYield", "commodity", "recordedAt"],
+  "properties": {
+    "cycleId": { "type": "string", "minLength": 1 },
+    "totalYield": { "type": "string", "pattern": "^\\d+(\\.\\d+)?$" },
+    "commodity": { "type": "string", "minLength": 1 },
+    "reserveFraction": { "type": "number", "minimum": 0, "maximum": 1, "description": "Defaults to 0.20." },
+    "floatFraction": { "type": "number", "minimum": 0, "maximum": 1, "description": "Defaults to 0.30." },
+    "fixedFraction": { "type": "number", "minimum": 0, "maximum": 1, "description": "Defaults to 0.50; fraction of the distributable bucket divided evenly." },
+    "recordedAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,22 @@
+{
+  "id": "tidepool-protocol-clerk",
+  "name": "Tidepool Protocol Clerk",
+  "kind": "office",
+  "part-of": "pool-service",
+  "jurisdiction": "tidepool",
+  "bears-duty": [
+    "emsenn/duty/executing-tidepool-protocol-transitions"
+  ],
+  "provides-skill": [
+    "execute-tidepool-protocol-transitions"
+  ],
+  "deontic-profile": {
+    "executing-tidepool-protocol-transitions": "duty"
+  },
+  "normative-structure": "Execute only already-authorized Tidepool protocol transitions through the authoritative pool operation family and preserve their receipts. Operation availability is execution capability, not political or financial discretion. The clerk does not create membership facts, voting weight, consensus, principal custody, settlement identity, or Turntide-wide governance standing by assertion.",
+  "theory-basis": [
+    "Tidepool #94 admission → vote → cycle → public receipt acceptance path.",
+    "Turntide ANT authority boundary: Tidepool financial membership and Turntide DAO standing are distinct.",
+    "Live Cold Red Gate receipt 2026-10-03: all nine Tidepool protocol verbs are installed and unavailable to the Trusted Assistant / Board offices."
+  ]
+}

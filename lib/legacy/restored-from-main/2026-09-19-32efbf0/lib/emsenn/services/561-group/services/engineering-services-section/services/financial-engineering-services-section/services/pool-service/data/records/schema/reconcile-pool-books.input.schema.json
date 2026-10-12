@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/reconcile-pool-books-input",
+  "title": "reconcilePoolBooksInput",
+  "description": "The --account/--member-ledger/--recorded-at request reconcile-pool-books.mjs runs the two-witness reading over.",
+  "type": "object",
+  "required": ["account", "memberLedgerPath", "recordedAt"],
+  "properties": {
+    "account": { "type": "string", "minLength": 1 },
+    "memberLedgerPath": { "type": "string", "minLength": 1, "description": "Path to the member's declared postings JSON file ({postings: [{date, ref, account, amount, commodity}]})." },
+    "recordedAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

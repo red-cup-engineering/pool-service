@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/admit-member-enterprise-input",
+  "title": "admitMemberEnterpriseInput",
+  "description": "The request admit-member-enterprise.mjs reads via --request or stdin: proposing one member enterprise onto the pool's pending roster.",
+  "type": "object",
+  "required": ["enterpriseId", "offer", "reportingCommitment", "proposedAt"],
+  "properties": {
+    "enterpriseId": { "type": "string", "minLength": 1, "description": "Legal or trade name and contact, used as the roster key." },
+    "offer": { "type": "string", "minLength": 1, "description": "A one-sentence receiver/offer/price statement, no identity framing." },
+    "reportingCommitment": { "type": "string", "minLength": 1, "description": "The cadence and shape of receipts the enterprise posts to disclosure." },
+    "sponsorEnterprise": { "type": ["string", "null"], "description": "An already-admitted enterprise vouching for it; required unless allowUnsponsored is true." },
+    "allowUnsponsored": { "type": "boolean", "description": "True only for the org's own first-roster seed." },
+    "proposedAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

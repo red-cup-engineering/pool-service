@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pool-service/settle-pool-draw-output",
+  "title": "settlePoolDrawOutput",
+  "description": "The settlement result: the matched tally and admission receipt id, or a refusal naming why the draw is not open for settlement.",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["settled", "tally", "receipt"],
+      "properties": {
+        "settled": { "const": true },
+        "tally": {
+          "type": "object",
+          "required": ["drawId", "memberAccount", "amount", "releasedAt", "admittedAt", "status"],
+          "properties": {
+            "drawId": { "type": "string" },
+            "memberAccount": { "type": "string" },
+            "amount": { "type": "string", "pattern": "^-?\\d+(\\.\\d+)?$" },
+            "releasedAt": { "type": "string" },
+            "admittedAt": { "type": ["string", "null"] },
+            "status": { "enum": ["open", "matched"] }
+          },
+          "additionalProperties": false
+        },
+        "receipt": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["settled", "reason"],
+      "properties": {
+        "settled": { "const": false },
+        "reason": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  ]
+}
