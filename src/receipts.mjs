@@ -12,7 +12,7 @@ import { put, append, readLog } from "@red-cup-engineering/semiotic-eavt-service
 export function recordPoolReceipt(journalRoot, category, record, recordedAt) {
   if (typeof recordedAt !== "string" || !recordedAt.endsWith("Z") || !Number.isFinite(Date.parse(recordedAt)))
     throw new TypeError("pool receipt requires its original ISO UTC occurrence clock");
-  const id = put(journalRoot, "pool-receipt", { category, ...record, at: recordedAt });
+  const id = put(journalRoot, "pool-receipt", { ...record, category, at: recordedAt });
   // Native logs carry occurrence references, not another receipt body/store.
   // Stream only this receipt's day; unchanged serial retries publish no second
   // equivalent occurrence. A put followed by a failed append remains recoverable.
