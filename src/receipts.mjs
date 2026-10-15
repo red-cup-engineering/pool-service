@@ -1,5 +1,21 @@
 /** `receipts` — the one place this package writes the store. */
-import { put, append, readLog } from "@red-cup-engineering/semiotic-eavt-services-section/store";
+import { put, append, readLog, logDates, get } from "@red-cup-engineering/semiotic-eavt-services-section/store";
+
+/** Read the category's verified receipts in their recorded occurrence order. */
+export function poolReceipts(journalRoot, category) {
+  const rows = [], seen = new Set();
+  for (const date of logDates(journalRoot, "pool-receipt")) {
+    for (const { line } of readLog(journalRoot, "pool-receipt", date)) {
+      if (line.a !== "pool-receipt" || line.v !== category || seen.has(line.e)) continue;
+      const record = get(journalRoot, "pool-receipt", line.e);
+      if (!record || record.category !== category || record.at !== line.at)
+        throw new Error("pool receipt occurrence differs from its verified record");
+      seen.add(line.e);
+      rows.push({ id: line.e, record });
+    }
+  }
+  return rows;
+}
 
 /**
  * Records one pool receipt into the journal rooted at `journalRoot`.
