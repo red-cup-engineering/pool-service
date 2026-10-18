@@ -3,6 +3,11 @@
   "version": "0.6.0",
   "type": "module",
   "description": "The pool: the poor's manufactured ensemble as operations over the house ledger, with typed settlement destinations across supported rails. Members pool bounded sleeves; the pool is itself a sleeve with a rising barrier series; draws are timing-float instruments priced on the fee they avoid and limited by tally credit (matched crossings, never balance); every draw is a release/admission crossing; a default is a mismatch held in FOUR, never an eviction.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/red-cup-engineering/financial-engineering-services-section.git",
+    "directory": "services/pool-service"
+  },
   "keywords": [
     "561-group",
     "pool",
