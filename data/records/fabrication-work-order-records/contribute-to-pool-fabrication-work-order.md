@@ -2,8 +2,8 @@
 ## Requirements
 - `member-contribution-posting`: The operation must post a balanced double-entry transfer from the member's own sleeve account into the pool's own account, in the request's named commodity, using energy-bank's ledger primitives, and return the posting record plus the ledger's new entry list.
 ## Prohibitions
-- `refuses-non-positive-amount`: The operation must throw rather than post when amount is not a positive decimal string.
-- `refuses-self-contribution`: The operation must throw rather than post when sourceSleeve equals the pool account.
+- `refuses-non-positive-amount`: The operation must throw rather than post when amount is not a positive decimal string. [claims: a-contribution-moves-value]
+- `refuses-self-contribution`: The operation must throw rather than post when sourceSleeve equals the pool account. [claims: same-account-is-no-transfer]
 ## Laws
 - `commodity-derived-account-path-law` | energy-bank accounts.mjs (`@red-cup-engineering/energy-bank@0.3.1`) | 2026-09-05 | lib/emsenn/services/561-group/services/engineering-services-section/services/computer-engineering-services-section/services/computer-systems-engineering-services-section/services/computer-game-system-services-section/services/energy-bank/src/accounts.mjs | Applies to how the posting's account paths are derived. | energyAccountPath(id, commodity) derives liabilities:<commodity>:<id>, never a fixed liabilities:energy:<id> path regardless of what commodity is actually posted.
 - `pure-data-transformation-law` | The language law (owner-stated 2026-08-30) | v1 | .claude/rules/org-layering.md | Applies to contributeToPool as ledger-entry-list transformation, never filesystem I/O. | A function computing a new ledger entry list from an old one performs no I/O of its own; effects (persisting the state document, recording a receipt) are a caller's concern.
@@ -11,6 +11,10 @@
 - `node-esm-operation` | Node.js | v24.2.0+ | https://nodejs.org/docs/v24/api/esm.html | Applies to the .mjs operation and its import.meta.main guard. | The package uses one executable ESM operation source file eligible for downstream staged package-birth assays.
 ## Open questions
 none
+## Claims
+- `dep-energy-bank` | measured | dependency | @red-cup-engineering/energy-bank@0.3.1 is published on the Group registry | none | data/records/2026-10-19-work-order-evidence/npm-view-red-cup-engineering-energy-bank-0-3-1.json | sha256:17a12843769f6761772f831eb8c15e165c341bb36f5c3c1b6937897c5cc92d2a | npm view of @red-cup-engineering/energy-bank@0.3.1 returned its name, version and integrity (2026-10-19)
+- `a-contribution-moves-value` | derived | world | A contribution transfers a positive amount from the member's sleeve to the pool, so a zero or negative amount moves nothing or moves it the wrong way | none | requirement:member-contribution-posting | The requirement posts a balanced transfer from the member into the pool, which a non-positive amount cannot be
+- `same-account-is-no-transfer` | derived | world | A transfer from the pool account to itself is no transfer | none | requirement:member-contribution-posting | The requirement moves value from the member's own sleeve account into the pool's own account, two accounts
 ## Package
 ```json
 {"packageName":"@red-cup-engineering/scratch-contribute-to-pool-20260905-service","packageVersion":"0.1.0","license":"UNLICENSED","dependencies":{"@red-cup-engineering/energy-bank":"0.3.1"},"devDependencies":{}}
