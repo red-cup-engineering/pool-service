@@ -177,7 +177,7 @@ it holds now agree.
 - `src/contests.mjs` — opening a contest on a reconciliation bucket entry.
 - `src/store.mjs` — this package's own small persisted-document helper (one JSON document per
   pool: `{pool, tallies, draws, enterprises, votes, cycleTallies, cycleSplits, contests}`).
-- `src/receipts.mjs` — the one call site for `@red-cup-engineering/semiotic-eavt-engineering-services-section/record-semantic-record`.
+- `src/receipts.mjs` — the one call site for `@red-cup-engineering/semiotic-eavt-services-section/record-semantic-record`.
 - `scripts/admit-pool-member.mjs`, `derive-member-credit-line.mjs`, `front-pool-draw.mjs`,
   `settle-pool-draw.mjs`, `contribute-to-pool.mjs`, `derive-pool-barrier-series.mjs`,
   `reconcile-pool-books.mjs`, `admit-member-enterprise.mjs`, `retire-member-enterprise.mjs`,
@@ -191,7 +191,7 @@ it holds now agree.
   `tally-votes`, `split`, `contest`.
 - `schemas/` — a JSON Schema (draft 2020-12) pair per script, one for its request
   and one for its result, validated in `test/schema-conformance.test.mjs` through
-  `@red-cup-engineering/json-schema-engineering-services-section/validation`.
+  `@red-cup-engineering/json-schema-services-section/validation`.
 
 ## A cold-start gap, named plainly
 
