@@ -52,10 +52,10 @@
   "dependencies": {
     "@red-cup-engineering/energy-bank": "workspace:*",
     "@red-cup-engineering/flatfile-engineering-services-section": "workspace:*",
-    "@red-cup-engineering/json-schema-services-section": "workspace:*",
-    "@red-cup-engineering/semiotic-eavt-services-section": "workspace:*",
+    "@red-cup-engineering/json-schema-engineering-services-section": "workspace:*",
+    "@red-cup-engineering/semiotic-eavt-engineering-services-section": "workspace:*",
     "@red-cup-engineering/treasury-observation-service": "workspace:*",
-    "@red-cup-engineering/eavt-services-section": "workspace:*"
+    "@red-cup-engineering/eavt-engineering-services-section": "workspace:*"
   },
   "engines": {
     "node": ">=24"
