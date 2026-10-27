@@ -1,0 +1,272 @@
+{
+  "id": "2026-10-27-pool-service-normalization",
+  "kind": "misfiled-resources-register",
+  "by": "apply-services-section-normalization",
+  "date": "2026-10-27",
+  "moved": [
+    {
+      "from": "data/records/fabrication-work-order-records/apportion-by-weight-fabrication-work-order.md",
+      "to": "data/records/service-records/fabrication-work-order-service-records/apportion-by-weight-fabrication-work-order.md",
+      "rule": "eavt-data-law",
+      "sourceSha256": "4bdabc70c30aabddeba319b37238837ba158f73f53a7eef7fc837d052409a764",
+      "destinationSha256": "4bdabc70c30aabddeba319b37238837ba158f73f53a7eef7fc837d052409a764",
+      "byteIdentical": true
+    },
+    {
+      "from": "data/records/fabrication-work-order-records/contribute-to-pool-fabrication-work-order.md",
+      "to": "data/records/service-records/fabrication-work-order-service-records/contribute-to-pool-fabrication-work-order.md",
+      "rule": "eavt-data-law",
+      "sourceSha256": "6e7380ff0d27c06600cb60aa00df3e17654608720eb699fc75c8a08de287c0e7",
+      "destinationSha256": "6e7380ff0d27c06600cb60aa00df3e17654608720eb699fc75c8a08de287c0e7",
+      "byteIdentical": true
+    },
+    {
+      "from": "data/records/ledger-records/2026-09-05-pool-cycle-transactions.beancount",
+      "to": "data/records/service-records/ledger-service-records/2026-09-05-pool-cycle-transactions.beancount",
+      "rule": "eavt-data-law",
+      "sourceSha256": "7c57376fd51027395c04cb07d396997f8c70fe5246028fb353410d398706e057",
+      "destinationSha256": "7c57376fd51027395c04cb07d396997f8c70fe5246028fb353410d398706e057",
+      "byteIdentical": true
+    },
+    {
+      "from": "data/records/pool-cycle-disclosure-records/2026-09-05-pool-cycle-disclosure-2026-09-cycle-1.json",
+      "to": "data/records/service-records/pool-cycle-disclosure-service-records/2026-09-05-pool-cycle-disclosure-2026-09-cycle-1.json",
+      "rule": "eavt-data-law",
+      "sourceSha256": "1480141b645203a140664541e1b0ac545d6f80489a3e30f40d562d95b1ff1c7c",
+      "destinationSha256": "1480141b645203a140664541e1b0ac545d6f80489a3e30f40d562d95b1ff1c7c",
+      "byteIdentical": true
+    },
+    {
+      "from": "data/records/tidepool-member-enterprise-roster-records/2026-09-05-tidepool-member-enterprise-roster.json",
+      "to": "data/records/service-records/tidepool-member-enterprise-roster-service-records/2026-09-05-tidepool-member-enterprise-roster.json",
+      "rule": "eavt-data-law",
+      "sourceSha256": "1414af535b1a4c6f9244bc536aaf3db4edeaad0e0dcd517cd076c103b178affa",
+      "destinationSha256": "1414af535b1a4c6f9244bc536aaf3db4edeaad0e0dcd517cd076c103b178affa",
+      "byteIdentical": true
+    }
+  ],
+  "owed": [
+    {
+      "rule": "stray-top-level",
+      "reason": "LICENSE/ is not an entry the services-section law knows; its owner decides where it belongs",
+      "directory": ".",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/admit-enterprise-vote.input.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/admit-enterprise-vote.output.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/admit-member-enterprise.input.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/admit-member-enterprise.output.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/admit-pool-member.input.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/admit-pool-member.output.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/contest-pool-receipt.input.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/contest-pool-receipt.output.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/contribute-to-pool.input.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/contribute-to-pool.output.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/derive-cycle-split.input.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/derive-cycle-split.output.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/derive-member-credit-line.input.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/derive-member-credit-line.output.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/derive-pool-barrier-series.input.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/derive-pool-barrier-series.output.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/derive-set-of-pool-cycle-transactions.input.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/derive-set-of-pool-cycle-transactions.output.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/front-pool-draw.input.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/front-pool-draw.output.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/pool-cycle-disclosure.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/publish-cycle-disclosure.input.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/publish-cycle-disclosure.output.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/reconcile-pool-books.input.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/reconcile-pool-books.output.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/reconcile-pool-receipts.input.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/reconcile-pool-receipts.output.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/record-distribution-vote.input.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/record-distribution-vote.output.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/retire-member-enterprise.input.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/retire-member-enterprise.output.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/settle-pool-draw.input.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/settle-pool-draw.output.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/tally-cycle-votes.input.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/tally-cycle-votes.output.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    },
+    {
+      "rule": "data-fits-no-service-directory",
+      "reason": "schemas-under-data-records bound it for data/records/schemas/tidepool-member-enterprise-roster.schema.json: schemas is not <service>-records",
+      "directory": "schemas",
+      "count": 1
+    }
+  ]
+}
