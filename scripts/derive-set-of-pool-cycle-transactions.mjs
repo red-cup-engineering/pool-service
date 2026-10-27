@@ -9,10 +9,10 @@
  * (`deriveSetOfPoolCycleTransactions`).
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import { dirname, resolve } from "node:path";
 import { parseArgs } from "node:util";
 import { deriveSetOfPoolCycleTransactions } from "../src/cycle-transactions.mjs";
-import { dataKindDirectory } from "@red-cup-engineering/eavt-services-section/data-artifact-address";
+import { dataArtifactAddress } from "@red-cup-engineering/eavt-services-section/data-artifact-address";
 import { packageRoot, readStore, writeStore } from "../src/store.mjs";
 import { recordNiForBytes } from "../src/ledger-witness.mjs";
 import { recordPoolReceipt } from "../src/receipts.mjs";
@@ -85,8 +85,9 @@ export function deriveSetOfPoolCycleTransactionsFromStore(statePath, journalRoot
     return { booked: false, reason: `cycle "${request.cycleId}" is already booked (booking receipt ${existingBooking.receipt})` };
   }
 
-  const date = request.receivedAt.slice(0, 10);
-  const sidecarPath = options.sidecarPath ?? join(dataKindDirectory(packageRoot(), "record", "ledger"), `${date}-pool-cycle-transactions.beancount`);
+  const sidecarPath = options.sidecarPath ?? dataArtifactAddress({
+    root: packageRoot(), tier: "record", encoding: "beancount", subject: "ledger", at: request.receivedAt, action: "book",
+  }).path;
   const priorText = existsSync(sidecarPath) ? readFileSync(sidecarPath, "utf8") : "";
 
   // A sidecar from before the journal kept bookings: admit what it carries once, as it is.

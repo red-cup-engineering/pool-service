@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, mkdtempSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { deriveCycleDisclosure } from "../src/disclosure.mjs";
 import { publishCycleDisclosureFromStore } from "../scripts/publish-cycle-disclosure.mjs";
 import { writeStore } from "../src/store.mjs";
@@ -47,8 +47,9 @@ test("publish-cycle-disclosure: writes one dated JSON record and a receipt", () 
   const statePath = join(dir, "pool.json");
   writeStore(statePath, { pool: { id: "t", barrierSeries: BARRIER_SERIES }, tallies: [], draws: [], enterprises: ENTERPRISES, votes: [], contests: [], cycleSplits: [SPLIT] });
 
-  const recordPath = join(dir, "2026-09-05-pool-cycle-disclosure-2026-09-cycle-1.json");
-  const result = publishCycleDisclosureFromStore(statePath, dir, { cycleId: "2026-09-cycle-1", falsifiers: FALSIFIERS, publishedAt: "2026-09-05T00:00:00Z" }, { recordPath });
+  const result = publishCycleDisclosureFromStore(statePath, dir, { cycleId: "2026-09-cycle-1", falsifiers: FALSIFIERS, publishedAt: "2026-09-05T00:00:00Z" }, { root: dir });
+  const recordPath = result.path;
+  assert.equal(recordPath, join(dir, "data/records/service-records/pool-cycle-disclosure-service-records/2026-09-05.json"));
   assert.equal(result.published, true);
   assert.match(result.receipt, /^ni:\/\/\//);
 
@@ -58,13 +59,13 @@ test("publish-cycle-disclosure: writes one dated JSON record and a receipt", () 
   assert.equal(written.public.roster.length, 2);
 
   const originalRecord = readFileSync(recordPath, "utf8");
-  const laterRecordPath = join(dir, "2026-09-06-pool-cycle-disclosure-2026-09-cycle-1.json");
+  const laterRecordPath = join(dirname(recordPath), "2026-09-06.json");
   assert.throws(
     () => publishCycleDisclosureFromStore(
       statePath,
       dir,
       { cycleId: "2026-09-cycle-1", falsifiers: ["changed"], publishedAt: "2026-09-06T00:00:00Z" },
-      { recordPath: laterRecordPath },
+      { root: dir },
     ),
     /already has a published disclosure/u,
   );
