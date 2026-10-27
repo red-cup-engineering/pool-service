@@ -30,7 +30,6 @@ function niReceipt(value) {
 test("bounded Tidepool acceptance loop produces admission, vote, cycle, reconciliation, and public receipts from one store", () => {
   const dir = mkdtempSync(join(tmpdir(), "tidepool-acceptance-loop-"));
   const statePath = join(dir, "pool.json");
-  const disclosurePath = join(dir, "cycle-1-disclosure.json");
 
   const drawId = "draw:tidepool-acceptance:alice:1";
   const alicePath = ledgerAccountPath(ALICE);
@@ -248,9 +247,10 @@ test("bounded Tidepool acceptance loop produces admission, vote, cycle, reconcil
     statePath,
     dir,
     disclosureRequest,
-    { recordPath: disclosurePath },
+    { root: dir },
   );
   assert.equal(publication.published, true);
+  const disclosurePath = publication.path;
   niReceipt(publication.receipt);
   const disclosureBytes = readFileSync(disclosurePath, "utf8");
   const disclosure = JSON.parse(disclosureBytes);
@@ -277,7 +277,7 @@ test("bounded Tidepool acceptance loop produces admission, vote, cycle, reconcil
     statePath,
     dir,
     disclosureRequest,
-    { recordPath: disclosurePath },
+    { root: dir },
   ), /already has a published disclosure/u);
   assert.equal(readFileSync(disclosurePath, "utf8"), disclosureBytes);
 

@@ -3,13 +3,14 @@
  * Publishes one closed cycle's disclosure record (membership-and-governance specification,
  * "Disclosure"): reads the pool's persisted barrier series, `derive-cycle-split.mjs` result,
  * and enterprise roster off the store, derives the members' and public views
- * (`deriveCycleDisclosure`), and writes them as one dated JSON record under this package's own
- * `data/records/`. One effect: the record file write; a receipt is also recorded through the
- * semantic record journal.
+ * (`deriveCycleDisclosure`), and writes them as one dated JSON record at the data law's address
+ * for the `pool-cycle-disclosure` service. One effect: the record file write; a receipt is also
+ * recorded through the semantic record journal.
  */
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { parseArgs } from "node:util";
+import { dataArtifactAddress } from "@red-cup-engineering/eavt-services-section/data-artifact-address";
 import { deriveCycleDisclosure } from "../src/disclosure.mjs";
 import { packageRoot, readStore } from "../src/store.mjs";
 import { recordPoolReceipt } from "../src/receipts.mjs";
@@ -20,7 +21,7 @@ import { recordPoolReceipt } from "../src/receipts.mjs";
  * @param {string} statePath Path to the pool's persisted JSON document.
  * @param {string} journalRoot Custody root the disclosure receipt is recorded under.
  * @param {object} request `{cycleId, falsifiers, publishedAt}`.
- * @param {{recordPath?: string}} [options] `recordPath` overrides the default dated path under `data/records/`.
+ * @param {{root?: string}} [options] `root` is the section root that owns the record; default this package.
  * @returns {{published: true, path: string, receipt: string}} What was written.
  * @throws {Error} When no pool document, or no cycle-split for `request.cycleId`, exists at `statePath`.
  */
@@ -39,14 +40,13 @@ export function publishCycleDisclosureFromStore(statePath, journalRoot, request,
     publishedAt: request.publishedAt,
   });
 
-  const date = request.publishedAt.slice(0, 10);
-  const recordPath = options.recordPath ?? join(packageRoot(), "data/records", `${date}-pool-cycle-disclosure-${request.cycleId}.json`);
-  const recordDirectory = dirname(recordPath);
-  mkdirSync(recordDirectory, { recursive: true });
-  const cycleRecordSuffix = `-pool-cycle-disclosure-${request.cycleId}.json`;
-  const priorCycleRecord = readdirSync(recordDirectory, { withFileTypes: true })
-    .find((entry) => entry.isFile() && entry.name.endsWith(cycleRecordSuffix));
-  if (existsSync(recordPath) || priorCycleRecord) {
+  const { path: recordPath, directory } = dataArtifactAddress({
+    root: options.root ?? packageRoot(), tier: "record", encoding: "json", subject: "pool-cycle-disclosure", at: request.publishedAt, action: "publish",
+  });
+  mkdirSync(directory, { recursive: true });
+  const alreadyPublished = readdirSync(directory).some((name) => name.endsWith(".json")
+    && JSON.parse(readFileSync(join(directory, name), "utf8")).cycleId === request.cycleId);
+  if (alreadyPublished || existsSync(recordPath)) {
     throw new Error(`publish-cycle-disclosure: cycle "${request.cycleId}" already has a published disclosure; refusing to overwrite or republish it`);
   }
   writeFileSync(recordPath, `${JSON.stringify(disclosure, null, 2)}\n`, "utf8");
