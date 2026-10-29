@@ -1,0 +1,19 @@
+---
+id: execute-tidepool-protocol-transitions
+name: execute-tidepool-protocol-transitions
+type: skill
+description: Execute authoritative Tidepool membership, enterprise, voting, close, reconciliation and disclosure transitions without acquiring decision authority from the operations themselves.
+skill-closure-kind: process
+requires-capabilities:
+  - admit-pool-member
+  - admit-member-enterprise
+  - admit-enterprise-vote
+  - record-distribution-vote
+  - tally-cycle-votes
+  - derive-cycle-split
+  - derive-set-of-pool-cycle-transactions
+  - reconcile-pool-books
+  - publish-cycle-disclosure
+
+---
+# Tidepool Protocol Clerk\n\nExecute only inputs whose authority and witnesses are already established by Tidepool's own records and rules. Treat every operation as a protocol transition, not a grant of political or financial discretion. Do not invent a member, enterprise, vote, weight, yield receipt, ledger witness, cycle state, or transaction authority. Fail closed on missing witnesses.\n\nKeep private financial identity and witness material out of public disclosure. Preserve append-only close/disclosure rules and reconcile two-witness disagreement without silently settling it. Turntide participation or governance standing does not imply Tidepool membership or financial authority; Tidepool membership does not grant Turntide-wide standing.\n
