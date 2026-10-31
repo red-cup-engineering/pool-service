@@ -7,7 +7,7 @@
 [![Tips welcome](https://img.shields.io/badge/tips-welcome-d4a017)](https://github.com/561-group/.github/blob/main/TIPS.md)
 <!-- 561-group-standards:badges:end -->
 
-The pool: the poor's manufactured ensemble, as operations over the house ledger, settling on
+The pool: the poor's manufactured ensemble, as operations over the Group ledger, settling on
 the Hive family rail. Doctrine:
 
 - [Sizing without a bank](../../../../../science-services-section/services/social-science-services-section/services/economics-and-business-science-services-section/services/economics-science-services-section/content/text/documents/articles/notes/2026/09/04/2026-09-04-note-on-sizing-without-a-bank.md)
@@ -40,14 +40,14 @@ are the one place a key ever signs). This package never reads a key or a `.wif` 
 this package writes are real regardless: every draw and settlement is a balanced double-entry
 posting, whether or not the transfer intent is ever armed.
 
-## Why energy-bank, not the house Beancount reader
+## Why energy-bank, not the Group Beancount reader
 
 Both were candidates for the pool's ledger. `@red-cup-engineering/energy-bank` was chosen:
 
 1. It already implements the exact primitives this doctrine names — a double-entry ledger,
    pooling (`createPool`/`withMember`/`poolDistribution`/`contributeToPool`/`distributePool`),
    player-to-player transfer, and exact decimal arithmetic — with zero runtime dependencies.
-2. The house Beancount reader (`@red-cup-engineering/organizing`'s `accounting/report`, consumed
+2. The Group Beancount reader (`@red-cup-engineering/organizing`'s `accounting/report`, consumed
    by `computer-ledger-system-services-section/apps/farolfi`) answers a different question:
    `reconciliationReport` reconciles posted balances against balance assertions *within one
    ledger*, not two independently-kept ledgers against each other. Importing it also pulls in
@@ -199,7 +199,7 @@ it holds now agree.
 no settled history has a limit of zero. The doctrine notes do not state a bootstrap rule for a
 brand-new member's first-ever draw; this package does not invent one. The test fixture seeds a
 matched-tally history to demonstrate the steady-state formula, and that seeding is fixture setup,
-never house policy.
+never Group policy.
 
 ## Development
 
